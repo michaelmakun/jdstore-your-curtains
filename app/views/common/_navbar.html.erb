@@ -1,4 +1,4 @@
-<nav class="nav navbar-default" role="navigation">
+<nav class="nav navbar-inverse" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="/" class="navbar-brand">JDstore</a>
@@ -16,7 +16,10 @@
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%= link_to("退出", destroy_user_session_path, :method => :delete) %></li>
+                <% if current_user.admin? %>
+                  <li><%= link_to("管理员选项",admin_products_path) %></li>
+                <% end %>
+                  <li><%= link_to("退出", destroy_user_session_path, :method => :delete) %></li>
               </ul>
             </li>
           <% end %>
