@@ -1,3 +1,18 @@
 <h1>编缉产品</h1>
+<%= simple_form_for [:admin,@product] do |f| %>
 
-<%= render "products_item" %>
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.input :quantity %>
+<%= f.input :price %>
+
+<% if @product.image.present? %>
+  <span>目前商品圈</span> <br>
+  <%= image_tag(@product.image.thumb,url) %>
+<% end %>
+
+<%= f.input :image, :as => :file %>
+
+<%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
+
+<% end %>
