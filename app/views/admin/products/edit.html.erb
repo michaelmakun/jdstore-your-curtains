@@ -8,7 +8,7 @@
 
 <% if @product.image.present? %>
   <span>目前商品圈</span> <br>
-  <%= image_tag(@product.image.thumb,url) %>
+  <%= image_tag(@product.image.thumb.url) %>
 <% end %>
 
 <%= f.input :image, :as => :file %>
