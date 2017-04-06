@@ -2,6 +2,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @products = Product.all
+    if params[:favorite] == "success"
+      @products = current_user.favorite_products
+    end
   end
 
   def show
@@ -49,6 +52,28 @@ class ProductsController < ApplicationController
       flash[:warning] = "你的购物车内已有此物品"
     end
     redirect_to product_path(@product)
+  end
+
+  def add_favorite
+    @product = Product.find(params[:id])
+    if !current_user.favorite_product?(@product)
+      current_user.favorite!(@product)
+      flash[:notice] = "收藏#{@product.title}成功"
+    else
+      flash[:warning] = "您已收藏过该产品"
+    end
+    redirect_to :back
+  end
+
+  def cancel_favorite
+    @product = Product.find(params[:id])
+    if current_user.favorite_product?(@product)
+      current_user.unfavorite!(@product)
+      flash[:alert] = "取消收藏#{@product.title}成功"
+    else
+      flash[:warning] = "本来就没有收藏，不用取消"
+    end
+    redirect_to :back
   end
 
   private
