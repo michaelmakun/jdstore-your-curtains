@@ -3,12 +3,12 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cart = current_cart
-    @cart_item = @cart.cart_items.find_by(product_id: params[:id])
-    @product = @cart_item.product
+    @cart_item = @cart.cart_items.find_by(params[:id])
+    # @product = @cart_item.product
     @cart_item.destroy
 
-    flash[:warning] = "成功将#{@product.title} 从购物车删除"
-    redirect_to :back
+    flash[:warning] = "成功从购物车删除#{@cart_item.title}产品"
+    redirect_to carts_path
   end
 
   def update
