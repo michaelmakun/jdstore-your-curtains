@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :products do
+    resources :reviews
     member do
       get :add_to_cart
       post :add_favorite

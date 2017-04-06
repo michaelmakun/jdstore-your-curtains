@@ -13,6 +13,7 @@
         <%= @product.description %>
       </p>
     </div>
+    <div>总体评价:<div class="star-rating" data-score=<%= @avg_review %> ></div></div>
     <div> 数量: <%= @product.quantity %></div>
     <div class="product-price"> ¥ <%= @product.price %></div>
     <div class="pull-right">
@@ -22,5 +23,45 @@
         已销售一空，无法购买
       <% end %>
     </div>
+
+    <hr>
+
+    <div class="review clearfix">
+      <%= simple_form_for [@product, @review] do |f| %>
+        <div class="form-group">
+          <div id="star-rating"></div>
+          <%= f.input :comment %>
+        </div>
+
+        <div class="form-action">
+          <%= f.submit "评论" %>
+        </div>
+      <% end %>
+
+      <% @reviews.each do |review| %>
+        <div class="reviews">
+          <div class="rating-star" data-score=<%= review.rating %>> </div>
+          <p><%= review.comment %></p>
+          <p>
+            <%= review.user.email %> - <%= review.created_at %>
+          </p>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+
+<script>
+  $('.star-rating').raty({
+    path: '/assets',
+    readOnly: true,
+    score: function() {
+          return $(this).attr('data-score');
+    }
+  });
+  $('#star-rating').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+</script>

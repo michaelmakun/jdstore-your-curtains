@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :favorites
   has_many :fans, through: :favorites, source: :user
+  has_many :reviews, dependent: :destroy
 end
