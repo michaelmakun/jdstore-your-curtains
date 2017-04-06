@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @products = Product.all
   end
@@ -47,7 +48,7 @@ class ProductsController < ApplicationController
     else
       flash[:warning] = "你的购物车内已有此物品"
     end
-    redirect_to :back
+    redirect_to product_path(@product)
   end
 
   private
