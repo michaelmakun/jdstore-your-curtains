@@ -13,6 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.raty
 //= require bootstrap/alert
 //= require bootstrap/dropdown
 //= require_tree .
+
+//带星的评论
+$('.star-rating').raty({
+  path: '/images',
+  readOnly: true,
+  score: function() {
+        return $(this).attr('data-score');
+  }
+});
+$('#star-rating').raty({
+  path: '/images/',
+  scoreName: 'review[rating]'
+});
