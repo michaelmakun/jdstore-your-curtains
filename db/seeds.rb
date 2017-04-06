@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 u = User.new
-u.email = "admin@gmail.com"    #设定管理员帐户
+u.email = "michaelmakun@aliyun.com"    #设定管理员帐户
 
 u.password = "123456"
 
