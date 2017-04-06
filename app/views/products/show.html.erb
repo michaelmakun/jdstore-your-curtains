@@ -38,14 +38,19 @@
         </div>
       <% end %>
 
-      <% @reviews.each do |review| %>
-        <div class="reviews">
-          <div class="rating-star" data-score=<%= review.rating %>> </div>
-          <p><%= review.comment %></p>
-          <p>
-            <%= review.user.email %> - <%= review.created_at %>
-          </p>
-        </div>
+      <% if @reviews.blank? %>
+        <h3>No reviews just yet, would you like to add the first review?</h3>
+        <!-- <%= link_to("第一条评论", new_product_review_path(@product), class: "btn btn-danger btn-lg") %> -->
+      <% else %>
+        <% @reviews.each do |review| %>
+          <div class="reviews">
+            <div class="star-rating" data-score=<%= review.rating %>></div>
+            <p><%= review.comment %></p>
+            <p>
+              <%= review.user.email %> - <%= review.created_at %>
+            </p>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
