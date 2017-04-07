@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
 
+  mount_uploader :image, ImageUploader
+
   def admin?
     is_admin
   end
