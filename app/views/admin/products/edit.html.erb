@@ -1,18 +1,19 @@
-<h1>编缉产品</h1>
-<%= simple_form_for [:admin,@product] do |f| %>
+<div class="col-md-8 col-md-offset-2">
+  <h2 class="text-center">编缉商品</h2>
+  <%= simple_form_for [:admin, @product] do |f| %>
+    <%= f.input :title, label: "商品名称" %>
+    <%= f.input :description, label: "商品描述" %>
+    <%= f.input :quantity, label: "商品库存" %>
+    <%= f.input :price, label: "商品价格" %>
 
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :quantity %>
-<%= f.input :price %>
-
-<% if @product.image.present? %>
-  <span>目前商品圈</span> <br>
-  <%= image_tag(@product.image.thumb.url) %>
-<% end %>
-
-<%= f.input :image, :as => :file %>
-
-<%= f.submit "Submit", data: { disable_with: "Submitting..." } %>
-
-<% end %>
+    <% if @product.image.present? %>
+      <span>目前商品圈</span> <br>
+      <%= image_tag(@product.image.thumb.url) %>
+    <% end %>
+    <%= f.input :image, :as => :file, label: "商品图片" %>
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "商品类别") %>
+    <br>
+    <br>
+    <%= f.submit "上传", class: "btn btn-default" %>
+  <% end %>
+</div>

@@ -13,8 +13,9 @@
       <div class="row">
         <div class="col-md-2">
           <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-            <li><%= link_to("Products List", admin_products_path, :class => "btn btn-success") %></li>
-            <li><%= link_to("Orders", admin_orders_path, :class => "btn btn-danger") %></li>
+            <li><%= link_to("全部商品", admin_products_path, :class => "btn btn-success") %></li>
+            <li><%= link_to("订单查询", admin_orders_path, :class => "btn btn-danger") %></li>
+            <li><%= link_to("类别管理", admin_categories_path, class: "btn btn-info") %></li>
           </ul>
         </div>
         <div class="col-md-10">

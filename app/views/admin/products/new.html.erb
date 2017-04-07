@@ -1,3 +1,14 @@
-<h1>新增产品</h1>
-
-<%= render 'products_item' %>
+<div class="col-md-8 col-md-offset-2">
+  <h2 class="text-center">新增产品</h2>
+  <%= simple_form_for [:admin, @product] do |f| %>
+    <%= f.input :title, label: "商品名称" %>
+    <%= f.input :description, label: "商品描述" %>
+    <%= f.input :quantity, label: "商品库存" %>
+    <%= f.input :price, label: "商品价格" %>
+    <%= f.input :image, :as => :file, label: "商品图片" %>
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "商品类别") %>
+    <br>
+    <br>
+    <%= f.submit "上传", class: "btn btn-default" %>
+  <% end %>
+</div>
