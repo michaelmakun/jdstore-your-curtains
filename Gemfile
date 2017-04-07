@@ -40,6 +40,7 @@ gem 'letter_opener', group: :development
 gem 'aasm'
 gem 'figaro'
 gem 'fog'
+gem 'ransack'
 
 group :production do
   gem 'pg'

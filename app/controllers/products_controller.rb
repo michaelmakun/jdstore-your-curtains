@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :validate_search_key, only: [:search]
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @products = Product.all
@@ -84,9 +85,25 @@ class ProductsController < ApplicationController
     redirect_to :back
   end
 
+  def search
+    if @query_string.present?
+      @products = search_params
+    end
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+  end
+
   private
 
   def product_params
     params.require(:product).permit(:title, :description, :quantity, :price)
+  end
+
+  def search_params
+    Product.ransack({:title_or_description_cont => @query_string}).result(distinct: true)
   end
 end

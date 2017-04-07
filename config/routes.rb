@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       post :add_favorite
       post :cancel_favorite
     end
+    collection do
+      get :search
+    end
   end
 
   namespace :admin do
