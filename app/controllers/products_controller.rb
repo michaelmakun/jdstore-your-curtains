@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :validate_search_key, only: [:search]
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @products = Product.all
+    @products = Product.all.recent
+    if params[:category].present?
+      @category_id = Category.find_by(name: params[:category]).id
+      @products = Product.where(category_id: @category_id).recent
+    end
     if params[:favorite] == "success"
       @products = current_user.favorite_products
     end
