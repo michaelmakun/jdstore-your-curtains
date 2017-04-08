@@ -14,7 +14,8 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to product_path(@product)
     else
-      render :new
+      flash[:warning] = "评论不得为空"
+      redirect_to @product
     end
   end
 
