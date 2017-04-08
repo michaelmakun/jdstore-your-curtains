@@ -9,10 +9,12 @@
         <% end %>
       <% end %>
       <%= product.title %> ¥  <%= product.price %>
-      <% if !current_user.favorite_product?(product) %>
-        <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg"), add_favorite_product_path(product), method: :post ) %>
-      <% else %>
-        <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg", style: "color: red"), cancel_favorite_product_path(product), method: :post ) %>
+      <% if current_user %>
+        <% if !current_user.favorite_product?(product) %>
+          <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg"), add_favorite_product_path(product), method: :post ) %>
+        <% else %>
+          <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg", style: "color: red"), cancel_favorite_product_path(product), method: :post ) %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
