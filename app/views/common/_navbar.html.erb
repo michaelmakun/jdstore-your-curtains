@@ -3,7 +3,7 @@
     <div class="navbar-left">
       <a href="/">欢迎来到窗帘世家！</a>
     </div>
-    <ul class="navbar-list">
+    <ul class="navbar-list" style="list-style:none">
       <% if !current_user %>
         <li class="navbar-listItem">
           <%= link_to("注册", new_user_registration_path) %>

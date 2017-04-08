@@ -6,9 +6,12 @@ class ProductsController < ApplicationController
     if params[:category].present?
       @category_id = Category.find_by(name: params[:category]).id
       @products = Product.where(category_id: @category_id).recent
-    end
-    if params[:favorite] == "success"
+    elsif params[:favorite] == "success"
       @products = current_user.favorite_products
+    elsif params[:order] == "by_product_quantity"
+      @products = Product.all.order("quantity DESC")
+    elsif params[:order] == "by_product_price"
+      @products = Product.all.order("price ASC")
     end
   end
 

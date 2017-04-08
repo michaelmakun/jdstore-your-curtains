@@ -39,6 +39,12 @@
    background: #70C1B3;
  }
 
+ body {
+   color: #2E2E2E;
+   font-family: "Microsoft Yahei", verdana;
+   background: #FFFFFF;
+ }
+
 /* navbar */
 .navbar-wrap {
   width: 100%;
@@ -78,24 +84,8 @@
   color: #FFAB91;
 }
 
- /*  navbar搜索框  */
- .products-search-form {
-    margin-top: 10px;
-    padding-left: 20px;
-    width: 200px;
-    .search-bar {
-      position: relative;
-      margin-top: 10px;
-      display: inline-block;
-      padding-right: 40px;
 
-      .search-bar-input  {
-        min-width: 300px;
-        transition: 0.35s;
-      }
-    }
-}
-
+/* 设置页脚 */
 
 .footer {
   background: #333333;
@@ -103,6 +93,7 @@
   text-align: center;
   font-size: 12px;
   color: #C2C2C2;
+  height: 100px;
   span {
     display: inline-block;
     margin-left: 5px;

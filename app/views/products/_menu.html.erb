@@ -1,0 +1,12 @@
+<div class="menu-wrap">
+  <ul class="menuList" style="list-style:none;">
+    <li class="menuList-item">
+      <%= link_to("首页", products_path) %>
+    </li>
+    <% Category.all.each do |category| %>
+      <li class="menuList-item">
+        <%= link_to(category.name, products_path(category: category.name)) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

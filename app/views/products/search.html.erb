@@ -1,14 +1,32 @@
-<div class="row">
-  <% @products.each do |product| %>
-    <div class="col-xs-6 col-xs-3">
-      <%= link_to product_path(product) do %>
-        <% if product.image.present? %>
-          <%= image_tag(product.image.thumb, class: "thumbnail") %>
-        <% else %>
-          <%= image_tag("https://ww1.sinaimg.cn/large/006tNc79gy1fdyy9beax0g30a00a0mx3.gif", width:"200", height: "200",class: "thumbnail") %>
-        <% end %>
+<div class="header-wrap">
+  <div class="header">
+    <div class="headerContent">
+      <div class="logo">
+        <%= link_to("窗帘世家", products_path) %>
+      </div>
+        <%= render :partial => 'products/search' %>
+        <%= render :partial => 'products/cart' %>
+      </div>
+  </div>
+</div>
+<%= render :partial => 'products/menu' %>
+<div class="">
+  <% if @products.present? %>
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-xs-6 col-xs-3">
+          <%= link_to product_path(product) do %>
+            <% if product.image.present? %>
+              <%= image_tag(product.image.thumb, class: "thumbnail") %>
+            <% else %>
+              <%= image_tag("https://ww1.sinaimg.cn/large/006tNc79gy1fdyy9beax0g30a00a0mx3.gif", width:"200", height: "200",class: "thumbnail") %>
+            <% end %>
+          <% end %>
+          <%= product.title %> - <%= product.price %>
+        </div>
       <% end %>
-      <%= product.title %> - <%= product.price %>
     </div>
+  <% else %>
+    <p class="">亲，没有搜到商品，要不换个关键词试试？</p>
   <% end %>
 </div>

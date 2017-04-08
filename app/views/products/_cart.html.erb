@@ -1,0 +1,7 @@
+<div class="cart-wrap">
+  <div class="cart">
+    <%= link_to carts_path do %>
+      购物车 <i class="fa fa-cart-plus"></i> ( <%= current_cart.products.count %> )
+    <% end %>
+  </div>
+</div>

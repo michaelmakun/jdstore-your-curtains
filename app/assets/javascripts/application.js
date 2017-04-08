@@ -14,9 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.raty
-//= require bootstrap/alert
-//= require bootstrap/dropdown
+//= require bootstrap
 //= require_tree .
+
+//轮播图
+$(document).ready(function () {
+  $('#myCarousel').carousel({
+    interval: 2000 //目前是2秒播放一张，可以根据需要调整这个值
+  })
+})
 
 //带星的评论
 $('.star-rating').raty({
