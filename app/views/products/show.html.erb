@@ -57,7 +57,7 @@
     <li class="active productDescription-menuList-item"><a class="productDescription-menuList-item-1" data-toggle="tab" href="#tab_content_1">商品详情</a></li>
     <li class="productDescription-menuList-item" data-toggle="tab", href="#tab_content_2"><a>商品评价(<%= @product.reviews.count %>)</a></li>
   </ul>
-  <div class="productDescription-content">
+  <div class="tab-content productDescription-content">
     <!-- Start product description -->
     <div class="productDescription-content-1 tab-pane in fade active" id="tab_content_1">
       <div class="productDescription-content-1-image">
@@ -90,7 +90,7 @@
         <%= simple_form_for [@product, @review] do |f| %>
           <div class="form-group">
             <div id="star-rating"></div>
-            <%= f.input :comment %>
+            <%= f.input :comment, label: "添加评论" %>
           </div>
 
           <div class="form-action">
