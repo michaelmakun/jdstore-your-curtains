@@ -9,7 +9,9 @@
           <%= link_to("注册", new_user_registration_path) %>
         </li>
         <li class="navbar-spacer"></li>
-        <li class="navbar-listItem">登录</li>
+        <li class="navbar-listItem">
+          <%=  link_to("登录", new_user_session_path) %>
+        </li>
       <% else %>
         <li class="navbar-listItem">
           Hi!, <%= current_user.email %>

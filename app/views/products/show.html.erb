@@ -1,61 +1,121 @@
-<div class="row">
-  <div class="col-md-6">
+<div class="header-wrap">
+  <div class="header">
+    <div class="headerContent">
+      <div class="logo">
+        <%= link_to("窗帘世家", products_path) %>
+      </div>
+        <%= render :partial => 'products/search' %>
+        <%= render :partial => 'products/cart' %>
+      </div>
+  </div>
+</div>
+<%= render :partial => 'products/menu' %>
+<p class="location"><%= link_to("首页", products_path)%> >
+  <% Category.all.each do |category| %>
+    <% if @product.category.name == category.name %>
+      <%= link_to category.name, products_path( category: category.name), class: "link" %>
+    <% end %>
+  <% end %>
+  > <%= @product.title %>
+</p>
+
+<div class="productDetail">
+  <div class="productDetail-left">
     <% if @product.image.present? %>
-      <%= image_tag(@product.image.medium.url, class: "thumbnail") %>
+      <%= image_tag(@product.image.medium.url, class: "productDetail-left-img") %>
     <% else %>
       <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
     <% end %>
   </div>
-  <div class="col-md-6">
-    <h2><%= @product.title %></h2>
-    <div style="height:100px;">
-      <p>
-        <%= @product.description %>
-      </p>
-    </div>
-    <div>总体评价:<div class="star-rating" data-score=<%= @avg_review %> ></div></div>
-    <div> 数量: <%= @product.quantity %></div>
-    <div class="product-price"> ¥ <%= @product.price %></div>
-    <div class="pull-right">
+  <div class="productDetail-right">
+    <h3 class="productDetail-right-title"><%= @product.title %></h3>
+    <p class="productDetail-right-text"><%= @product.description %></p>
+    <p class="productDetail-right-value">
+      <span class="productDetail-right-item">售价</span> <span class="productDetail-right-value-item-price">¥<%= @product.price %></span>
+    </p>
+    <p class="productDetail-right-item">
+      <span class="productDetail-right-item-service">运费 | 满99元包邮 | 正品保证 </span>
+    </p>
+    <p class="productDetail-right-item">
+      总体评价:<div class="star-rating productDetail-right-item-star" data-score=<%= @avg_review %> ></div>
+    </p>
+    <p class="productDetail-right-item">
+      <span class="productDetail-right-item-quantity">库存:<%= @product.quantity %></span>
+    </p>
+    <p class="productDetail-right-cart">
       <% if @product.quantity.present? && @product.quantity > 0 %>
-        <%= link_to("加入购物车", add_to_cart_product_path(@product), :class => "btn btn-primary btn-lg btn-danger") %>
+        <%= link_to("加入购物车", add_to_cart_product_path(@product), :class => "btn btn-danger add-cart") %>
       <% else %>
         已销售一空，无法购买
       <% end %>
-    </div>
-
-    <hr>
-
-    <div class="review clearfix">
-      <%= simple_form_for [@product, @review] do |f| %>
-        <div class="form-group">
-          <div id="star-rating"></div>
-          <%= f.input :comment %>
-        </div>
-
-        <div class="form-action">
-          <%= f.submit "评论" %>
-        </div>
-      <% end %>
-
-      <% if @reviews.blank? %>
-        <h3>No reviews just yet, would you like to add the first review?</h3>
-        <!-- <%= link_to("第一条评论", new_product_review_path(@product), class: "btn btn-danger btn-lg") %> -->
-      <% else %>
-        <% @reviews.each do |review| %>
-          <div class="reviews">
-            <div class="star-rating" data-score=<%= review.rating %>></div>
-            <p><%= review.comment %></p>
-            <p>
-              <%= review.user.email %> - <%= review.created_at %>
-            </p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    </p>
   </div>
 </div>
 
+<div class="productDescription">
+  <ul class="nav nav-tabs productDescription-menuList" style="list-style:none">
+    <li class="active productDescription-menuList-item"><a class="productDescription-menuList-item-1" data-toggle="tab" href="#tab_content_1">商品详情</a></li>
+    <li class="productDescription-menuList-item" data-toggle="tab", href="#tab_content_2"><a>商品评价(<%= @product.reviews.count %>)</a></li>
+  </ul>
+  <div class="productDescription-content">
+    <!-- Start product description -->
+    <div class="productDescription-content-1 tab-pane in fade active" id="tab_content_1">
+      <div class="productDescription-content-1-image">
+        <% if @product.image.present? %>
+          <%= image_tag(@product.image.url) %>
+        <% else %>
+          <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+        <% end %>
+      </div>
+      <p><%= @product.description %></p>
+      <div class="faq">
+        <p class="faq-title text-center">常见问题</p>
+        <p class="question">使用什么快递发货？</p>
+        <p class="answer">默认使用顺丰快递发货，配送范围覆盖全国大部分地区（港澳台地区除外）。</p>
+        <p class="question">如何申请退货？</p>
+        <p class="answer">
+          1.自收到商品之日起7日内，顾客可申请无忧退货，退款将原路返还，不同的银行处理时间不同，预计1-5个工作日到账；<br />
+          2.退货流程：<br />
+          确认收货-申请退货-客服审核通过-用户寄回商品-仓库签收验货-退款审核-退款完成；<br />
+          3.如因质量问题，退货邮费由商家承担，退款完成后钱款将沿原渠道返还。因客户个人原因产生的退货，购买和寄回运费由客户个人承担。<br />
+        </p>
+        <p class="question">如何开具发票？</p>
+        <p class="answer">如需开具普通发票，请在下单时联系客服办理，我们将随货物一起快递给您；</p>
+      </div>
+    </div>
+    <!-- End of product description -->
+    <!-- Start of product reviews -->
+    <div class="productDescription-content-2 tab-pane fade" id="tab_content_2">
+
+        <%= simple_form_for [@product, @review] do |f| %>
+          <div class="form-group">
+            <div id="star-rating"></div>
+            <%= f.input :comment %>
+          </div>
+
+          <div class="form-action">
+            <%= f.submit "评论" %>
+          </div>
+        <% end %>
+
+        <% if @reviews.blank? %>
+          <h3>No reviews just yet, would you like to add the first review?</h3>
+        <% else %>
+          <% @reviews.each do |review| %>
+            <div class="reviews">
+              <div class="star-rating" data-score=<%= review.rating %>></div>
+              <p><%= review.comment %></p>
+              <p>
+                <%= review.user.email %> - <%= review.created_at %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+
+    </div>
+    <!-- End of products reviews-->
+  </div>
+</div>
 
 <script>
   $('.star-rating').raty({
