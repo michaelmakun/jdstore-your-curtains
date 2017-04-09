@@ -57,27 +57,3 @@
 <div class="productList">
   <%= render :partial => "products/product_list" %>
 </div>
-
-
-
-<!-- <div class="row">
-  <% @products.each do |product| %>
-    <div class="col-md-2">
-      <%= link_to product_path(product) do %>
-        <% if product.image.present? %>
-          <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
-        <% else %>
-          <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
-        <% end %>
-      <% end %>
-      <%= product.title %> ¥  <%= product.price %>
-      <% if current_user %>
-        <% if !current_user.favorite_product?(product) %>
-          <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg"), add_favorite_product_path(product), method: :post ) %>
-        <% else %>
-          <%= link_to(content_tag(:i, "", class: "fa fa-heart fa-lg", style: "color: red"), cancel_favorite_product_path(product), method: :post ) %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-</div> -->

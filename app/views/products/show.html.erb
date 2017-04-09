@@ -59,7 +59,7 @@
   </ul>
   <div class="tab-content productDescription-content">
     <!-- Start product description -->
-    <div class="productDescription-content-1 tab-pane in fade active" id="tab_content_1">
+    <div class="tab-pane productDescription-content-1 tab-pane in fade active" id="tab_content_1">
       <div class="productDescription-content-1-image">
         <% if @product.image.present? %>
           <%= image_tag(@product.image.url) %>
@@ -85,7 +85,7 @@
     </div>
     <!-- End of product description -->
     <!-- Start of product reviews -->
-    <div class="productDescription-content-2 tab-pane fade" id="tab_content_2">
+    <div class="tab-pane productDescription-content-2 fade" id="tab_content_2">
 
         <%= simple_form_for [@product, @review] do |f| %>
           <div class="form-group">
@@ -117,16 +117,18 @@
   </div>
 </div>
 
-<script>
-  $('.star-rating').raty({
-    path: '/images/',
-    readOnly: true,
-    score: function() {
-          return $(this).attr('data-score');
-    }
-  });
-  $('#star-rating').raty({
-    path: '/images/',
-    scoreName: 'review[rating]'
-  });
-</script>
+<%= content_for :handwrite_javascript do %>
+  <script>
+    $('.star-rating').raty({
+      path: '/images/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+      }
+    });
+    $('#star-rating').raty({
+      path: '/images/',
+      scoreName: 'review[rating]'
+    });
+  </script>
+<% end %>
