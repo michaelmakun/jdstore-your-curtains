@@ -234,39 +234,6 @@
   margin-left: 10px;
   margin-top: 10px;
 }
-// .productList-item-carBtn {
-//   top: 168px;
-//   right: 20px;
-//   width: 40px;
-//   height: 40px;
-//   text-align: center;
-//   line-height: 40px;
-//   background: #fff;
-//   border-radius: 50%;
-//   display: none;
-//   -webkit-transiton: all .1s;
-//   transition: all .1s;
-// }
-// .productList-item-carBtn:hover {
-//   background: #D32048;
-//   .fa-cart-plus {
-//     color: #fff;
-//   }
-// }
-// .productList-item-sellout {
-//   position: absolute;
-//   top: 80px;
-//   left: 50%;
-//   width: 70px;
-//   height: 70px;
-//   line-height: 70px;
-//   margin-left: -35px;
-//   font-size: 16px;
-//   background-color: rgba(0,0,0,.55);
-//   border-radius: 50%;
-//   color: #fff;
-// }
-
 /* 当前位置 */
 .location {
   width: 1200px;
@@ -343,7 +310,7 @@
 }
 .productDetail-right-cart {
   display: block;
-  margin: 50px auto;
+  margin: 20px auto;
   width: 178px;
   // height: 48px;
   line-height: 45px;
@@ -391,4 +358,26 @@
 }
 .productDescription-content-1 .productDescription-content-1-image img {
   width: 700px;
+}
+.productDescription-des {
+  font-size: 16px;
+  font-family: "microsoft-yahei";
+}
+.faq {
+  margin-top: 20px;
+  font-weight: 200;
+  .faq-title {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #666;
+    font-size: 15px;
+  }
+  .question {
+    font-size: 14px;
+    color: #666;
+  }
+  .answer {
+    color: #999;
+    margin-bottom: 30px;
+  }
 }
