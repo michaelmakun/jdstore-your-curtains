@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    # @categories = Category.all.map { |c| [c.name, c.id] }
     @reviews = @product.reviews.all.order("created_at DESC")
     @review = Review.new
 

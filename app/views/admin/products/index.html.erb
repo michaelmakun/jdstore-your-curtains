@@ -9,6 +9,7 @@
       <th width="220">商品图形</th>
       <th>名称</th>
       <th>价格</th>
+      <th>类别</th>
       <th width="100">管理选项</th>
     </tr>
   </thead>
@@ -21,7 +22,7 @@
             <% if product.image.present? %>
               <%= image_tag(product.image.thumb.url, class: "thumbnail" )%>
             <% else %>
-              <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
+              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
             <% end %>
           <% end %>
         </td>
@@ -30,6 +31,13 @@
         </td>
         <td>
           <%= product.price %>
+        </td>
+        <td>
+          <% if product.category.present? %>
+            <%= product.category.name %>
+          <% else %>
+            <p>没有分类，请在编缉中添加</p>
+          <% end %>
         </td>
         <td>
           <%= link_to("编缉", edit_admin_product_path(product), class: :"btn btn-success btn-xs" ) %>

@@ -11,12 +11,16 @@
 </div>
 <%= render :partial => 'products/menu' %>
 <p class="location"><%= link_to("首页", products_path)%> >
-  <% Category.all.each do |category| %>
-    <% if @product.category.name == category.name %>
-      <%= link_to category.name, products_path( category: category.name), class: "link" %>
+  <% if @product.category.present? %>
+    <% Category.all.each do |category| %>
+      <% if @product.category.name == category.name %>
+        <%= link_to category.name, products_path( category: category.id), class: "link" %>
+      <% end %>
     <% end %>
+    > <%= @product.title %>
+  <% else %>
+    <%= link_to @product.title, product_path(@product) %>
   <% end %>
-  > <%= @product.title %>
 </p>
 
 <div class="productDetail">

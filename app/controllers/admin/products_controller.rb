@@ -4,8 +4,8 @@ class Admin::ProductsController < AdminController
     if params[:category].blank?
       @products = Product.all.recent
     else
-      @category_id = Category.find_by(name: params[:category]).id
-      @products = Product.where(category_id: @category_id).recent
+      # @category_id = Category.find_by(name: params[:category]).id
+      @products = Product.where(category_id: params[:category]).recent
     end
   end
 
@@ -31,6 +31,7 @@ class Admin::ProductsController < AdminController
   def edit
     @product = Product.find(params[:id])
     @categories = Category.all.map { |c| [c.name, c.id] }
+    @product.category_id = params[:category_id]
   end
 
   def update

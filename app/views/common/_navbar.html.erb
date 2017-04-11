@@ -34,7 +34,7 @@
         <li class="navbar-spacer"></li>
         <% end %>
         <li class="navbar-listItem">
-          <%= link_to("登出", destroy_user_session_path) %>
+          <%= link_to("登出", destroy_user_session_path, method: :delete) %>
         </li>
       <% end %>
     </ul>
