@@ -115,19 +115,32 @@
           </div>
         <% end %>
 
-        <% if @reviews.blank? %>
-          <h3>No reviews just yet, would you like to add the first review?</h3>
-        <% else %>
-          <% @reviews.each do |review| %>
-            <div class="reviews">
-              <div class="star-rating" data-score=<%= review.rating %>></div>
-              <p><%= review.comment %></p>
-              <p>
-                <%= review.user.email %> - <%= review.created_at %>
-              </p>
-            </div>
+        <div class="product-reviews">
+          <% if @reviews.blank? %>
+            <h3>No reviews just yet, would you like to add the first review?</h3>
+          <% else %>
+            <% @reviews.each do |review| %>
+              <div class="reviews">
+                <div class="star-rating" data-score=<%= review.rating %>></div>
+                <p><%= review.comment %></p>
+                <p>
+                  <div class="" style="border-radius:15px;">
+                    <% if review.user.image.present? %>
+                      <%= image_tag(review.user.image.small.url) %>
+                    <% else %>
+                      <%= image_tag("http://placehold.it/200x200&text=No Pic", width: 30, height: 30,style: "border-radius: 20px;") %>
+                    <% end %>
+                  </div>
+                  <% if review.user.nickname.present? %>
+                    <%= review.user.nickname %> - <%= render_review_time(review) %>
+                  <% else %>
+                    <%= review.user.email %> - <%= render_review_time(review) %>
+                  <% end %>
+                </p>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
 
     </div>
     <!-- End of products reviews-->

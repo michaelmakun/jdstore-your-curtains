@@ -15,7 +15,11 @@
         </li>
       <% else %>
         <li class="navbar-listItem">
-          Hi!, <%= current_user.email %>
+          <% if current_user.nickname.present? %>
+            Hi!, <%= current_user.nickname %>
+          <% else %>
+            Hi!, <%= current_user.email %>
+          <% end %>
         </li>
         <li class="navbar-listItem">
           <%= link_to("编缉个人资料", edit_user_registration_path) %>
