@@ -1,9 +1,44 @@
-<div class="row">
+<div class="cart-title">
+  <ul class="cart-title-list">
+    <li class="cart-title-list-item"><b>购物车</b></li>
+    <li class="cart-clean">
+      <%= link_to("清空购物车", clean_carts_path,
+                  method: :delete, class: "pull-right btn cart-clean",
+                  data: { confirm: "你确定要清空整个购物车吗？"} )%>
+    </li>
+  </ul>
+</div>
+
+<div class="cart-content">
+  <ul class="cart-content-title">
+    <li class="cart-content-title-msg">商品信息</li>
+    <li class="cart-content-title-title">名称</li>
+    <li class="cart-content-title-price">单价</li>
+    <li class="cart-content-title-quantity">数量</li>
+    <li class="cart-content-title-operation">操作选项</li>
+  </ul>
+</div>
+<div class="cart-content">
+  <ul class="cart-content-title">
+    <li class="cart-content-title-msg">商品信息</li>
+    <li class="cart-content-title-price">单价</li>
+    <li class="cart-content-title-quantity">数量</li>
+    <li class="cart-content-title-total">小计（元）</li>
+    <li class="cart-content-title-operation">操作</li>
+  </ul>
+
+  <div class="cartPage-productList">
+    <%= render :partial => "product_list" %> 
+  </div>
+</div>
+
+
+<!-- <div class="row">
   <div class="col-md-12">
 
     <%= link_to("清空购物车", clean_carts_path,
                 method: :delete, class: "pull-right btn btn-warning btn-sm",
-                style: "text-decoration: underline;",
+                style: "text-decoration: none;",
                 data: { confirm: "你确定要清空整个购物车吗？"} )%>
 
     <h2>购物车</h2>
@@ -82,4 +117,4 @@
     </div>
 
   </div>
-</div>
+</div> -->

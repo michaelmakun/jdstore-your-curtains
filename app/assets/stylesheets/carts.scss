@@ -1,3 +1,65 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* 购物车 index */
+.cart-title {
+  width: 1200px;
+  margin: 20px auto;
+  .cart-title-list {
+    list-style: none;
+    text-decoration: none;
+    .cart-title-list-item {
+      font-size: 30px;
+    }
+    .cart-clean a {
+      font-size: 16px;
+      color: #BCAAA4;
+      background: none;
+      font-family: "microsoft-yahei";
+    }
+    .cart-clean a:hover {
+      color: #FFAB91;
+      background: none;
+    }
+  }
+}
+
+.cart-content {
+  width: 1200px;
+  margin: 30px auto;
+  background: #F5F5F5;
+}
+.cart-content-title {
+  font-size: 18px;
+  list-style: none;
+  font-family: "microsoft-yahei";
+  height:50px;
+  line-height: 50px;
+  overflow: hidden;
+}
+.cart-content-title-msg {
+  float: left;
+  width: 425px;
+  text-align: center;
+}
+.cart-content-title-price {
+  float: left;
+  width: 143px;
+  text-align: center;
+}
+.cart-content-title-quantity {
+  float: left;
+  width: 280px;
+  text-align: center;
+}
+.cart-content-title-total {
+  float: left;
+  width: 200px;
+  text-align: center;
+}
+.cart-content-title-operation {
+  float: left;
+  width: 150px;
+  text-align: center;
+}
