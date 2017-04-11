@@ -114,8 +114,31 @@
             <%= f.submit "评论" %>
           </div>
         <% end %>
+        <br>
+        <% if @reviews.blank? %>
+        <p>这个宝贝还没有人评论，来为它添加一个吧！</p>
+        <% else %>
+          <% @reviews.each do |review| %>
+            <div class="reviews">
+              <ul class="list-group">
+                <li class="list-group-item" >
+                  <div class="row">
+                    <div class="col-md-2">
+                      <div><%= image_tag(review.user.image.small.url) %></div>
+                      <p><%= review.user.nickname %></p>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="star-rating" data-score= <%= review.rating %> ></div>
+                      <p><%= review.comment %></p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
 
-        <div class="product-reviews">
+        <!-- <div class="product-reviews">
           <% if @reviews.blank? %>
             <h3>No reviews just yet, would you like to add the first review?</h3>
           <% else %>
@@ -140,7 +163,7 @@
               </div>
             <% end %>
           <% end %>
-        </div>
+        </div> -->
 
     </div>
     <!-- End of products reviews-->
