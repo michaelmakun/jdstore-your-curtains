@@ -10,27 +10,33 @@
 </div>
 
 <div class="cart-content">
-  <ul class="cart-content-title">
+  <div class="cart-content-title clearfix">
     <li class="cart-content-title-msg">商品信息</li>
     <li class="cart-content-title-title">名称</li>
     <li class="cart-content-title-price">单价</li>
     <li class="cart-content-title-quantity">数量</li>
     <li class="cart-content-title-operation">操作选项</li>
-  </ul>
-</div>
-<div class="cart-content">
-  <ul class="cart-content-title">
-    <li class="cart-content-title-msg">商品信息</li>
-    <li class="cart-content-title-price">单价</li>
-    <li class="cart-content-title-quantity">数量</li>
-    <li class="cart-content-title-total">小计（元）</li>
-    <li class="cart-content-title-operation">操作</li>
-  </ul>
+  </div>
 
-  <div class="cartPage-productList">
-    <%= render :partial => "product_list" %> 
+  <div class="cart-content-product">
+    <%= render :partial => "product_list" %>
   </div>
 </div>
+
+<div class="cart-checkout clearfix">
+  <hr>
+  <span class="pull-right">
+    <span class="cart-checkout-total">
+      总计 <span class="cart-checkout-total-num"><%= render_cart_total_price(current_cart) %> RMB </span>
+    </span>
+    <span class="add-checkout">
+      <%= link_to("确认结帐", checkout_carts_path, method: :post, class: "btn btn-danger btn-lg add-checkout pull-right") %>
+    </span>
+  </span>
+</div>
+
+
+
 
 
 <!-- <div class="row">
