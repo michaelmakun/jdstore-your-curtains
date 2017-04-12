@@ -14,6 +14,18 @@
 .headerContent {
   height: 60px;
 }
+.headerContent_fixed {
+  width: 1200px;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-top: 10px;
+  z-index: 100;
+  background: white;
+  box-shadow: rgba(0,0,0,.1) 0 1px 5px;
+}
 
 .logo {
   float: left;  /* logo search cart 都是用div模块包起来的，是block,所以放一排用float*/

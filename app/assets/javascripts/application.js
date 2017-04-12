@@ -36,3 +36,19 @@ $('#star-rating').raty({
   path: '/images/',
   scoreName: 'review[rating]'
 });
+
+
+//网页下拉时导航栏部分内容固定在顶部
+$(window).scroll(function () {
+
+  if ($(this).scrollTop() > 200) {//当我们下拉超过200的时候
+    if ($('.headerContent').is(':animated')) {
+      return false
+    }
+    $('.headerContent').addClass('headerContent_fixed') // 让导航栏固定在顶部
+    $('.headerContent').stop().animate({top: 0}, 600) // 在600ms内匀速慢慢出来
+  } else {
+    $('.headerContent').css({top: -80})
+    $('.headerContent').removeClass('headerContent_fixed')
+  }
+})
