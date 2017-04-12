@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
+  respond_to :js
 
   def destroy
     @cart = current_cart
@@ -12,16 +13,30 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    p params
     @cart = current_cart
-    @cart_item = @cart.cart_items.find(product_id: params[:id])
-
+    @cart_item = @cart.cart_items.find_by(product_id: params[:id])
     if @cart_item.product.quantity >= cart_item_params[:quantity].to_i
-      @cart_item.update(cart_item_params)
-      flash[:notice] = "成功变更数量"
+      if params[:add] == "1"
+        if @cart_item.quantity < @cart_item.product.quantity
+           @cart_item.quantity +=1
+           @cart_item.product.quantity -= 1
+           @cart_item.save
+        elsif @cart_item.quantity == @cart_item.product.quantity
+           flash[:alert] = "数量不足以加入购物车"
+        end
+      elsif params[:sub] == "1"
+        if @cart_item.quantity > 0
+          @cart_item.quantity -= 1
+          @cart_item.product.quantity += 1
+          @cart_item.save
+        elsif @cart_item.quantity = 0
+          flash[:notice] = "商品数量至少为1"
+        end
+      end
     else
       flash[:warning] = "数量不足以加入购物车"
     end
-
     redirect_to carts_path
   end
 
