@@ -124,8 +124,20 @@
                 <li class="list-group-item" >
                   <div class="row">
                     <div class="col-md-2">
-                      <div><%= image_tag(review.user.image.small.url) %></div>
-                      <p><%= review.user.nickname %></p>
+                      <div>
+                        <% if review.user.image.present? %>
+                          <%= image_tag(review.user.image.small.url) %>
+                        <% else %>
+                          <%= image_tag("http://ww4.sinaimg.cn/large/006tNbRwgy1fekb7g2mquj300u00ua9t.jpg") %>
+                        <% end %>
+                      </div>
+                      <p>
+                        <% if review.user.nickname.present? %>
+                          <%= review.user.nickname %>
+                        <% else %>
+                          <%= review.user.email %>
+                        <% end %>
+                      </p>
                     </div>
                     <div class="col-md-8">
                       <div class="star-rating" data-score= <%= review.rating %> ></div>
