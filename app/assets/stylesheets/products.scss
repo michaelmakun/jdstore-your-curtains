@@ -228,6 +228,7 @@
   color: #333;
   margin-left: 10px;
   margin-top: 10px;
+  overflow: scroll;
 }
 .propductList-item-heart {
   float: right;
@@ -241,6 +242,7 @@
   color: #808080;
   margin-left: 10px;
   margin-top: 10px;
+  overflow: scroll;
 }
 /* 当前位置 */
 .location {
@@ -284,10 +286,12 @@
   .productDetail-right-title {
     font-size: 25px;
     font-weight: bold;
+    overflow: scroll;
   }
   .productDetail-right-text {
     font-size: 20px;
     margin-top: 7px;
+    overflow: scroll;
   }
 }
 .productDetail-right-value {
