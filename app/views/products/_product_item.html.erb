@@ -1,4 +1,4 @@
-<li class="productList-item <%= last_item(index) %>">
+<div class="productList-item <%= last_item(index) %>">
   <p class="productList-item-pic">
     <%= link_to product_path(product) do %>
       <% if product.image.present? %>
@@ -33,4 +33,4 @@
   <% if product.quantity <= 0 %>
     <p class="productList-item-sellout">已售完</p>
   <% end %> -->
-</li>
+</div>

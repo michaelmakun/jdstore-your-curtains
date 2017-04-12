@@ -1,5 +1,5 @@
-<ul class="clearfix" style="list-style:none">
+<div class="clearfix" style="list-style:none">
   <% @products.each_with_index do |product,index| %>
     <%= render :partial => "product_item", locals: { product: product, index: index} %>
   <% end %>
-</ul>
+</div>
