@@ -1,4 +1,5 @@
 class Admin::CategoriesController < AdminController
+  before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -18,11 +19,9 @@ class Admin::CategoriesController < AdminController
   end
 
   def edit
-    @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       redirect_to admin_categories_path
     else
@@ -31,12 +30,15 @@ class Admin::CategoriesController < AdminController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
     redirect_to admin_categories_path
   end
 
   private
+
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)

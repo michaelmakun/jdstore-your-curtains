@@ -1,13 +1,12 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_product, only: [:new, :create]
 
   def new
-    @product = Product.find(params[:product_id])
     @review = Review.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @review = Review.new(review_params)
     @review.product = @product
     @review.user = current_user
@@ -20,6 +19,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
   def review_params
     params.require(:review).permit(:rating, :comment)

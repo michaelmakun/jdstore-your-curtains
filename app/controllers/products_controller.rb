@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :validate_search_key, only: [:search]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :add_to_cart, :add_favorite, :cancel_favorite]
   def index
     @products = Product.all.recent
     if params[:category].present?
@@ -16,7 +17,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
     # @categories = Category.all.map { |c| [c.name, c.id] }
     @reviews = @product.reviews.all.order("created_at DESC")
     @review = Review.new
@@ -42,11 +42,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to products_path
     else
@@ -55,13 +53,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to products_path
   end
 
   def add_to_cart
-    @product = Product.find(params[:id])
     if !current_cart.products.include?(@product)
       current_cart.add_product_to_cart(@product)
       flash[:notice] = "你已成功将 #{@product.title} 加入购物车"
@@ -72,7 +68,6 @@ class ProductsController < ApplicationController
   end
 
   def add_favorite
-    @product = Product.find(params[:id])
     if !current_user.favorite_product?(@product)
       current_user.favorite!(@product)
       flash[:notice] = "收藏#{@product.title}成功"
@@ -83,7 +78,6 @@ class ProductsController < ApplicationController
   end
 
   def cancel_favorite
-    @product = Product.find(params[:id])
     if current_user.favorite_product?(@product)
       current_user.unfavorite!(@product)
       flash[:alert] = "取消收藏#{@product.title}成功"
@@ -106,6 +100,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:title, :description, :quantity, :price)
