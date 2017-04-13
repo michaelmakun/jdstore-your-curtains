@@ -5,7 +5,12 @@
     <%= f.input :description, label: "商品描述" %>
     <%= f.input :quantity, label: "商品库存" %>
     <%= f.input :price, label: "商品价格" %>
-    <%= f.input :image, :as => :file, label: "商品图片" %>
+    <div class="group">
+      <%#= f.input :image, :as => :file, label: "商品图片" %>
+      <%= f.label :avatar %><br>
+      <%= f.file_field :avatar, :multiple => true, name: "photos[avatar][]" %>
+    </div>
+    <br>
     <%= select_tag(:category_id, options_for_select(@categories), :prompt => "商品类别") %>
     <br>
     <br>

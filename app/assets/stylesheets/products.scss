@@ -274,11 +274,37 @@
   margin: 0 auto;
   width: 420px;
   height: 518px;
-  .productDetail-left-img {
-    width: 100%;
-    height: 518px;
+  .productDetail-left-bigImage {
+    width: 400px;
+    height: 400px;
   }
 }
+.productDetail-left-imageList {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  .productDetail-left-imageList-item {
+    float: left;
+    // margin-left: 0;
+    overflow: hidden;
+    // width: 72px;
+    // height: 72px;
+    img {
+      // margin-top: 8px;
+      // margin-right: 5px;
+      width: 100%;
+      width: 70px;
+      height: 70px;
+      margin-right: 12px;
+    }
+  }
+  .intro-preview-activeItem {
+  border-color: #DB3652;
+  }
+  .productDetail-left-imageList-lastItem {
+    margin-right: 0;
+  }
+}
+
 .productDetail-right {
   float: right;
   width: 744px;
@@ -392,4 +418,57 @@
     color: #999;
     margin-bottom: 30px;
   }
+}
+
+/*放大镜*/
+.magnifier-thumb-wrapper {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0
+}
+
+.magnifier-lens {
+    position: absolute;
+    border: solid 1px #ccc;
+    z-index: 1000;
+    top: 0;
+    left: 0
+}
+
+.magnifier-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: solid 1px #ccc;
+    color: #fff;
+    text-align: center;
+    background: transparent;
+    background: rgba(50, 50, 50, 0.5);
+    z-index: 1000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F323232,endColorstr=#7F323232)";
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F323232,endColorstr=#7F323232)
+}
+
+.magnifier-loader-text {
+    font: 13px Arial;
+    margin-top: 10px
+}
+
+.magnifier-preview {
+    position: absolute;
+    width: 418px;
+    height: 420px;
+    left: 418px;
+    top: -1px;
+    padding: 0;
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.magnifier-preview img {
+    position: absolute;
+    top: 0;
+    left: 0
 }

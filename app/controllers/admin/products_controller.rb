@@ -12,17 +12,24 @@ class Admin::ProductsController < AdminController
   end
 
   def show
+    @photos = @product.photos.all
   end
 
   def new
     @product = Product.new
     @categories = Category.all.map { |c| [c.name, c.id] }
+    @photo = @product.photos.build   #上传多图用
   end
 
   def create
     @product = Product.new(product_params)
     @product.category_id = params[:category_id]
     if @product.save
+      if params[:photos] != nil
+        params[:photos]['avatar'].each do |a|
+          @photo = @product.photos.create(:avatar => a)
+        end
+      end
       redirect_to admin_products_path
     else
       render :new
@@ -36,8 +43,17 @@ class Admin::ProductsController < AdminController
 
   def update
     @product.category_id = params[:category_id]
-    if @product.update(product_params)
-      redirect_to admin_products_path, notice: "产品更新成功!!!"
+    if params[:photos] != nil
+      @product.photos.destroy_all #need to destroy old pics first
+
+      params[:photos]['avatar'].each do |a|
+        @photo = @product.photos.create!(:avatar => a )
+      end
+
+      @product.update(product_params)
+      redirect_to admin_products_path, notice: "产品带图片更新成功!!!"
+    elsif @product.update(product_params)
+      redirect_to admin_products_path, notice: "产品更新成功"
     else
       render :edit
     end
