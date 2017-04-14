@@ -274,7 +274,11 @@
   margin: 0 auto;
   width: 420px;
   height: 518px;
-  .productDetail-left-bigImage {
+}
+.productDetail-left-bigImage {
+  width: 400px;
+  height: 400px;
+  img {
     width: 400px;
     height: 400px;
   }
@@ -297,12 +301,9 @@
       margin-right: 12px;
     }
   }
-  .intro-preview-activeItem {
-  border-color: #DB3652;
-  }
-  .productDetail-left-imageList-lastItem {
-    margin-right: 0;
-  }
+}
+.intro-preview-activeItem {
+border-color: #DB3652;
 }
 
 .productDetail-right {
@@ -471,4 +472,19 @@
     position: absolute;
     top: 0;
     left: 0
+}
+#thumb-lens {
+    background-size: 415px 415px !important;
+}
+
+
+//搜索推荐
+.recommend {
+  margin: 50px auto;
+  background-color: #F5F5F5;
+}
+.recommendTitle {
+  height: 50px;
+  line-height: 50px;
+  margin-left: 40px;
 }

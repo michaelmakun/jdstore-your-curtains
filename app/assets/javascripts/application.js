@@ -65,9 +65,9 @@ m.attach({
 })
 
 // 预览图选择
-$(document).on('mouseover', '.intro-preview-item', function () {
+$(document).on('mouseover', '.productDetail-left-imageList-item', function () {
   var src = $(this).find('img').attr('src')
-  $('.intro-bigPic img').attr('src', src)
+  $('.productDetail-left-bigImage img').attr('src', src)
     $('#thumb-lens').css('background-image', 'url(' + src + ')')
   $(this).addClass('intro-preview-activeItem').siblings().removeClass('intro-preview-activeItem')
   m.attach({
