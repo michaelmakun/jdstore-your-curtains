@@ -1,54 +1,54 @@
 <div class="cart-content-product">
-  <% current_cart.cart_items.each do |cart_item| %>
-    <% if cart_item.product.present? %>
-        <div class="cart-content-product-img">
-          <%= link_to product_path(cart_item.product) do %>
-            <!-- <% if cart_item.product.image.present? %> -->
-            <% if cart_item.product.photos[0].present? %>
-              <!-- <%= image_tag(cart_item.product.image.thumb.url ) %> -->
-              <%= image_tag(cart_item.photos[0].avatar.thumb.url ) %>
-            <% else %>
-              <%= image_tag("http://placehold.it/200x200&text=No Pic") %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="cart-content-product-title">
-          <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
-        </div>
-        <div class="cart-content-product-price">
-          <%= cart_item.product.price %>
-        </div>
-        <div class="cart-content-product-quantity">
-          <%= form_for cart_item,url: cart_item_path(cart_item.product) do |f| %>
-          <div class="input-group">
-          	<span class="input-group-btn">
-          		<button class="btn btn-default" type="submit" name="sub" value="1"><span class="glyphicon glyphicon-minus"></span></button>
-          	</span>
-          	<%= f.number_field :quantity,class:"cart-content-num-input",:readonly => true  %>
-          	<span class="input-group-btn">
-          		<button class="btn btn-default" type="submit"  name="add" value="1"><span class="glyphicon glyphicon-plus"></span></button>
-          	</span>
-          </div>
-          <% end %>
-        </div>
-        <div class="cart-content-product-operation">
-          <%= link_to("删除",cart_item_path(cart_item), method: :delete, class: "cart-item-destroy", style: "text-decoration:none") %>
-        </div>
-    <% else %>
-      <div style="background-color: grey;">
-        <div class="cart-content-product-img">
-          <%= image_tag("https://ww2.sinaimg.cn/large/006tNc79gy1fe6gtfxntqj30ci09et97.jpg", class: "thumbnail") %>
-        </div>
-        <div class="cart-content-product-title">
-          <%= cart_item.title %>
-        </div>
-        <div class="cart-content-product-price"><p>此商品已过期，请选择其他商品</p></div>
-        <div class="cart-content-product-operation">
-          <%= link_to cart_item_path(cart_item), method: :delete do %>
-            <i class="fa fa-trash"></i>
-          <% end %>
-        </div>
-      </div>
+    <% current_cart.cart_items.each do |cart_item| %>
+        <% if cart_item.product.present? %>
+            <div class="cart-content-product-img">
+                <%= link_to product_path(cart_item.product) do %>
+                    <% if cart_item.product.photos[0].present? %>
+                        <%= image_tag(cart_item.product.photos[0].avatar.thumb.url ) %>
+                    <% else %>
+                        <%= image_tag("http://placehold.it/200x200&text=No Pic") %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class="cart-content-product-title">
+                <%= link_to(cart_item.product.title, product_path(cart_item.product)) %>
+            </div>
+            <div class="cart-content-product-price">
+                <%= cart_item.product.price %>
+            </div>
+            <div class="cart-content-product-quantity">
+                <%= form_for cart_item,url: cart_item_path(cart_item.product) do |f| %>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit" name="sub" value="1"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                        <%= f.number_field :quantity,class:"cart-content-num-input",:readonly => true  %>
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"  name="add" value="1"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                    </div>
+                <% end %>
+            </div>
+            <div class="cart-content-product-operation">
+                <%= link_to("删除",cart_item_path(cart_item), method: :delete, class: "cart-item-destroy", style: "text-decoration:none") %>
+            </div>
+        <% else %>
+            <div style="background-color: grey;">
+                <div class="cart-content-product-img">
+                    <%= image_tag("https://ww2.sinaimg.cn/large/006tNc79gy1fe6gtfxntqj30ci09et97.jpg", class: "thumbnail") %>
+                </div>
+                <div class="cart-content-product-title">
+                    <%= cart_item.title %>
+                </div>
+                <div class="cart-content-product-price">
+                    <p>此商品已过期，请选择其他商品</p>
+                </div>
+                <div class="cart-content-product-operation">
+                    <%= link_to cart_item_path(cart_item), method: :delete do %>
+                        <i class="fa fa-trash"></i>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
     <% end %>
-  <% end %>
 </div>

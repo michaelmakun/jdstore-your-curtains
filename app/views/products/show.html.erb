@@ -36,17 +36,11 @@
           data-large-img-url="<%= @photos.first.avatar.medium.url %>">
         </a>
       <% end %>
-      <!-- <% if @photos.present? %>
-        <%= image_tag(@photos.first.avatar.medium.url) %>
-      <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic") %>
-      <% end %> -->
     </div>
     <div class="productDetail-left-imageList">
       <% if @photos.present? %>
         <% @photos.each_with_index do |p,index| %>
           <% if index == 0 %>
-            <!-- <%= image_tag p.avatar.medium.url %> -->
             <div class="productDetail-left-imageList-item intro-preview-activeItem">
           <% else %>
             <div class="productDetail-left-imageList-item">
@@ -56,24 +50,8 @@
           <% end %>
           </div>
         <% end %>
-        <!-- </div> -->
       <% end %>
     </div>
-    <!-- <div>
-      <% if @photos.present? %>
-        <% @photos.each_with_index do |p, index| %>
-          <% if index == 0 %>
-            <%= image_tag p.avatar.medium.url %>
-            <div style="letter-spacing: -8px;">
-          <% else %>
-            <%= image_tag p.avatar.thumb.url %>
-          <% end %>
-        <% end %>
-        </div>
-      <% else %>
-        <%= image_tag("http://placehold.it/400x400&text=No Pic", class: "thumbnail") %>
-      <% end %>
-    </div> -->
   </div>
   <div class="productDetail-right">
     <h3 class="productDetail-right-title"><%= @product.title %></h3>
