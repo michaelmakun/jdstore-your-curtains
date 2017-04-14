@@ -100,6 +100,7 @@
       <div class="productDescription-content-1-image">
         <% if @photos.present? %>
           <% @photos.each_with_index do |p,index| %>
+            <hr>
             <%= image_tag p.avatar.medium.url %>
           <% end %>
         <% else %>
