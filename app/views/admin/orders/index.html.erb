@@ -13,8 +13,14 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to(order.id, admin_order_path(order)) %></td>
-        <td><%= order.created_at %></td>
-        <td><%= order.user.email %></td>
+        <td><%= render_order_time(order) %></td>
+        <td>
+          <% if order.user.nickname.present? %>
+            <%= order.user.nickname %>
+          <% else %>
+            <%= order.user.email %>
+          <% end %>
+        </td>
         <td><%= order.aasm_state %></td>
       </tr>
     <% end %>

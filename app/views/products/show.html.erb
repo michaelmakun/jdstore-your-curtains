@@ -158,9 +158,9 @@
                       </div>
                       <p>
                         <% if review.user.nickname.present? %>
-                          <%= review.user.nickname %>
+                          <%= review.user.nickname %><br> <%= render_review_time(review) %>
                         <% else %>
-                          <%= review.user.email %>
+                          <%= review.user.email %><br> <%= render_review_time(review) %>
                         <% end %>
                       </p>
                     </div>
