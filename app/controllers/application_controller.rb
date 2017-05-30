@@ -33,7 +33,10 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :image, :nickname) }
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :current_password, :image, :nickname) }
+    # devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :image, :nickname) }
+    # devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password, :current_password, :image, :nickname) }
+    added_attrs = [:nickname, :email, :password, :password_confirmation, :remember_me]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs<<:current_password
   end
 end
