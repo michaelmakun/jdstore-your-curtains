@@ -59,6 +59,12 @@
           <%= f.input :shipping_address %>
         </div>
 
+        <div class="city-group">
+          <%= f.select :province,  ChinaCity.list.unshift(["--省份--", 230000]), {}, class: "city-select "%>
+          <%= f.select :city,      ChinaCity.list(f.object.province).presence || [["--城市--", 230900]],    {}, class: "city-select " %>
+          <%= f.select :district,  ChinaCity.list(f.object.city).presence     || [["--地区--", 230903]],    {}, class: "city-select " %>
+        </div>
+
         <div class="checkout">
           <%= f.submit "生成订单", class: "btn btn-lg btn-danger pull-right",
                       data: { disable_with: "Submiting..."} %>

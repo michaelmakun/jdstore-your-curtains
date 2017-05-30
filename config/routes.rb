@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     :passwords     => "users/passwords",
   }
 
+  mount ChinaCity::Engine => '/china_city'
+
   root 'welcome#index'
 
   resources :products do

@@ -41,6 +41,7 @@ gem 'aasm'
 gem 'figaro'
 gem 'fog'
 gem 'ransack'
+gem 'china_city'    #insert china_city to address
 
 group :production do
   gem 'pg'

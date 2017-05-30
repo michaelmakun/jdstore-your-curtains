@@ -16,6 +16,7 @@
 //= require jquery.raty
 //= require bootstrap
 //= require_tree .
+//= require 'china_city/jquery.china_city'
 
 //轮播图
 $(document).ready(function () {
