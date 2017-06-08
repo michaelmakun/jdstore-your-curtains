@@ -27,6 +27,9 @@ class ProductsController < ApplicationController
     else
       @avg_review = @reviews.average(:rating).present? ? @reviews.average(:rating).round(2) : 0
     end
+    set_page_title       @product.title
+    set_page_description @product.description
+    set_page_image       @product.photos.first.avatar.medium.url
   end
 
   def new

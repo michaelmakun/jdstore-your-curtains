@@ -71,6 +71,7 @@
     <p class="productDetail-right-item">
       <span>收藏人气(<%= @product.fans.count %>)</span>
       <%= render_product_favorite(@product) %>
+      <%= social_share_button_tag(@product.title, :allow_sites => %w(facebook twitter google_plus wechat weibo), :image => @product.photos.first.avatar.medium.url, desc: @product.description ) %>
     </p>
     <p class="productDetail-right-cart">
       <%= render_product_add_to_cart(@product) %>

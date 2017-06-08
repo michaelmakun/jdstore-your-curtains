@@ -42,10 +42,12 @@ gem 'figaro'
 gem 'fog'
 gem 'ransack'
 gem 'china_city'    #insert china_city to address
-gem 'omniauth'
+gem 'omniauth'      #third-login
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
+gem 'social-share-button'  #share
+gem 'seo_helper'
 
 group :production do
   gem 'pg'
