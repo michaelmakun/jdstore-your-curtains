@@ -48,6 +48,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'social-share-button'  #share
 gem 'seo_helper'
+gem "intercom-rails"
 
 group :production do
   gem 'pg'
